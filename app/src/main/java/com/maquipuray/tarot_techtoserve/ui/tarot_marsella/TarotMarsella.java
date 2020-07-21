@@ -1,17 +1,16 @@
-package com.maquipuray.tarot_techtoserve.tarot_marsella;
+package com.maquipuray.tarot_techtoserve.ui.tarot_marsella;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.widget.Toast;
-
 import com.maquipuray.tarot_techtoserve.R;
+import com.maquipuray.tarot_techtoserve.ui.tarot_diario.TarotDiarioActivity;
 
 public class TarotMarsella extends AppCompatActivity {
 
@@ -26,6 +25,14 @@ public class TarotMarsella extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        LinearLayout ll_elcamino = findViewById(R.id.ll_elcamino);
+        ll_elcamino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TarotMarsella.this, TarotDiarioActivity.class));
             }
         });
     }

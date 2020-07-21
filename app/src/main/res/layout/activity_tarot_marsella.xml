@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tarot_marsella.TarotMarsella">
+    tools:context=".ui.tarot_marsella.TarotMarsella">
 
     <com.google.android.material.appbar.AppBarLayout
 
