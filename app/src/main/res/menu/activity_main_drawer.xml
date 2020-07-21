@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_colecciones"
+            android:icon="@drawable/ic_collections"
+            android:title="@string/menu_colecciones" />
+        <item
+            android:id="@+id/nav_temas"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_temas" />
+        <item
+            android:id="@+id/nav_experimentos"
+            android:icon="@drawable/ic_experiment"
+            android:title="@string/menu_experimentos" />
+    </group>
+
+    <group
+            android:id="@+id/group_divider"
+        android:checkableBehavior="single"
+         >
+        <item
+
+            android:id="@+id/nav_descargas"
+            android:icon="@drawable/ic_download"
+            android:title="@string/menu_descargas" />
+        <item
+            android:id="@+id/nav_notificaciones"
+            android:icon="@drawable/ic_notificactions"
+            android:title="@string/menu_notificaciones" />
+
+        <item
+            android:id="@+id/nav_comentarios"
+            android:icon="@drawable/ic_comment"
+            android:title="@string/menu_comentarios" />
+
+        <item
+            android:id="@+id/nav_acercade"
+            android:icon="@drawable/ic_about"
+            android:title="@string/menu_acercade" />
+
+    </group>
+</menu>
