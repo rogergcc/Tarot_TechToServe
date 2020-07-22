@@ -1,7 +1,9 @@
 package com.maquipuray.tarot_techtoserve.ui.tarot_diario;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class TarotDiarioActivity extends AppCompatActivity
     private int countCardClick = 0;
     private List<DataCards> dataCards;
 
+    private Context mcontext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class TarotDiarioActivity extends AppCompatActivity
 
         setSupportActionBar(activityTarotDiarioBinding.toolbar);
 
+        mcontext = this;
+        initView();
 
         activityTarotDiarioBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +56,14 @@ public class TarotDiarioActivity extends AppCompatActivity
             }
         });
 
+
+    }
+
+    public void initView() {
         dataCards = new ArrayList<>();
         dataCards.clear();
 //        RecyclerView rv_ = findViewById(R.id.rv_list);
-//        rv_.ad
+
         activityTarotDiarioBinding.rvList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         activityTarotDiarioBinding.rvList.setHasFixedSize(true);
         activityTarotDiarioBinding.rvList.setHasFixedSize(true);
@@ -79,14 +88,18 @@ public class TarotDiarioActivity extends AppCompatActivity
         activityTarotDiarioBinding.tvImgv5.setText("");
 
         initContainer(activityTarotDiarioBinding.imgv1stCard, activityTarotDiarioBinding.tvImgv1, 1);
-
         initContainer(activityTarotDiarioBinding.imgv2ndCard, activityTarotDiarioBinding.tvImgv2, 2);
-
         initContainer(activityTarotDiarioBinding.imgv3rdCard, activityTarotDiarioBinding.tvImgv3, 3);
-
         initContainer(activityTarotDiarioBinding.imgv4thCard, activityTarotDiarioBinding.tvImgv4, 4);
+        initContainer(activityTarotDiarioBinding.imgv5thCard, activityTarotDiarioBinding.tvImgv5, 5);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.tarot_menu, menu);
 
+        return true;
     }
 
     private void initContainer(ImageView imageView, TextView textView, int positionCardCruz) {
@@ -132,10 +145,24 @@ public class TarotDiarioActivity extends AppCompatActivity
                             activityTarotDiarioBinding.tvImgv5.setText(getString(R.string.tv_message_card));
                         }
 
+
+                        if (positionCardCruz == 5) {
+                            activityTarotDiarioBinding.rvList.setVisibility(View.GONE);
+                            activityTarotDiarioBinding.tvEligaSuCarta.setVisibility(View.GONE);
+                            activityTarotDiarioBinding.btnVerLectura.setVisibility(View.VISIBLE);
+
+                        }
+//                        imageView.setImageResource(state.item.getImageResource()); //always random card from deck
+
+//                        imageView.setImageResource(dataCards.get(state.position).getImageResource());
+                        imageView.setImageResource(state.item.getImageResource());
+
+                        imageView.setImageResource(R.drawable.carta);
+                        Toast.makeText(TarotDiarioActivity.this, "Carta: " + state.item.getName(), Toast.LENGTH_SHORT).show();
+
+                        DataUtils.rotateHorizontalSBack(mcontext, state.item.getImageResource(), imageView);
                         textView.setVisibility(View.GONE);
                         imageView.setEnabled(false);
-//                        imageView.setImageResource(state.item.getImageResource()); //always random card from deck
-                        imageView.setImageResource(dataCards.get(state.position).getImageResource());
 
                     default:
                         break;
@@ -148,8 +175,8 @@ public class TarotDiarioActivity extends AppCompatActivity
     }
 
 
-    private void setImgIntoContainer(DataCards listModal) {
-        activityTarotDiarioBinding.imgv1stCard.setImageResource(listModal.getImageResource());
+    private void setImgIntoContainer(ImageView imageView, DataCards data) {
+        activityTarotDiarioBinding.imgv1stCard.setImageResource(data.getImageResource());
     }
 
     @Override

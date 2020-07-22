@@ -29,4 +29,6 @@
     <string name="msg_ti2">Tirada Clásica</string>
     <string name="msg_ti3">El camino</string>
     <string name="tv_message_card">Coloque Aqui \nsu \nCarta</string>
+    <string name="ver_lectura">Ver Lectura</string>
+    <string name="eliga_carta">Eliga su carta</string>
 </resources>

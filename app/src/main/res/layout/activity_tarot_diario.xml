@@ -54,10 +54,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -71,10 +71,7 @@
                     <ImageView
 
                         android:id="@+id/imgv_2nd_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="120dp"
-
-                        android:src="@drawable/carta" />
+                        style="@style/StyleImageCard" />
 
                     <TextView
                         android:id="@+id/tv_imgv_2"
@@ -87,17 +84,18 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
 
                 <FrameLayout
+
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
@@ -105,12 +103,13 @@
                     <ImageView
 
                         android:id="@+id/imgv_1st_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="120dp"
+                        style="@style/StyleImageCard"
+                        android:layout_gravity="center"
 
-                        android:src="@drawable/carta" />
+                        />
 
                     <TextView
+
                         android:id="@+id/tv_imgv_1"
                         style="@style/StyleTextViewCard"
                         android:layout_width="wrap_content"
@@ -125,8 +124,9 @@
                     <ImageView
 
                         android:id="@+id/imgv_5th_card"
+                        style="@style/StyleImageCard"
                         android:layout_width="wrap_content"
-                        android:layout_height="120dp"
+
 
                         android:src="@drawable/carta" />
 
@@ -147,10 +147,7 @@
                     <ImageView
 
                         android:id="@+id/imgv_3rd_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="120dp"
-
-                        android:src="@drawable/carta" />
+                        style="@style/StyleImageCard" />
 
                     <TextView
                         android:id="@+id/tv_imgv_3"
@@ -163,11 +160,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -180,10 +177,7 @@
                     <ImageView
 
                         android:id="@+id/imgv_4th_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="120dp"
-
-                        android:src="@drawable/carta" />
+                        style="@style/StyleImageCard" />
 
                     <TextView
                         android:id="@+id/tv_imgv_4"
@@ -197,6 +191,7 @@
         </LinearLayout>
 
         <LinearLayout
+
             android:id="@+id/ll_cardsdeck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -207,25 +202,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <Button
+                android:id="@+id/btn_ver_lectura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/ver_lectura"
+                android:visibility="gone" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list"
                 android:layout_width="match_parent"
 
-                android:layout_height="160dp"
+                android:layout_height="140dp"
                 android:orientation="horizontal"
-                android:paddingTop="8dp"
-                android:visibility="visible"
+                android:paddingTop="2dp"
+
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_card" />
 
             <TextView
+                android:id="@+id/tv_eliga_su_carta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/roboto"
-                android:text="Eliga su carta"
+                android:text="@string/eliga_carta"
                 android:textColor="@android:color/white"
-                android:textSize="17sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
 

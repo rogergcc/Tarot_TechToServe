@@ -1,5 +1,13 @@
 package com.maquipuray.tarot_techtoserve.data;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+
 import com.maquipuray.tarot_techtoserve.R;
 
 import java.util.ArrayList;
@@ -53,5 +61,25 @@ public class DataUtils {
         cardsCompleteList.add(new DataCards(10, "rueda_de_la_fortuna_10", R.drawable.rueda_de_la_fortuna_10));
     }
 
+    public static void rotateHorizontalSBack(final Context context, final int imageGlide, final ImageView img_flip_animator) {
+        final ObjectAnimator oa1 = ObjectAnimator.ofFloat(img_flip_animator, "scaleX", 1f, 0f);
+        final ObjectAnimator oa2 = ObjectAnimator.ofFloat(img_flip_animator, "scaleX", 0f, 1f);
+        oa1.setInterpolator(new DecelerateInterpolator());
+        oa2.setInterpolator(new AccelerateDecelerateInterpolator());
+        oa1.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+//                img_flip_animator.setImageResource(imageGlide);
+//                setImageGlide(imageGlide, img_flip_animator, context);
+                img_flip_animator.setImageResource(imageGlide);
+                oa2.setDuration(500);
+                oa2.start();
+            }
+        });
+        oa1.setDuration(500);
+
+        oa1.start();
+    }
 
 }

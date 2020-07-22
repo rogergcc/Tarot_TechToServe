@@ -117,6 +117,7 @@ public class TarotAdapter extends
             final DataCards item = dataCardsList.get(card.getAdapterPosition());
             final DragData state = new DragData(item, shape.getWidth(), shape.getHeight(), position);
             final View.DragShadowBuilder shadow = new View.DragShadowBuilder(shape);
+
             ViewCompat.startDragAndDrop(shape, null, shadow, state, 0);
 
             return true;
@@ -195,12 +196,6 @@ public class TarotAdapter extends
 //            rl_offline_item = itemView.findViewById(R.id.rl_offline_item);
 //            imageViewBack = itemView.findViewById(R.id.imgBackCard);
 
-//            flipView_card.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    clickListener.onItemClick(getLayoutPosition(), flipView_card);
-//                }
-//            });
 
 //            imageViewFront.setOnClickListener(new View.OnClickListener() {
 //                @Override

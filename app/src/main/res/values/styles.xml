@@ -60,8 +60,14 @@
         <item name="android:textSize">11sp</item>
         <item name="android:text">@string/tv_message_card</item>
 
-
     </style>
 
+    <style name="StyleImageCard">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/carta</item>
+        <item name="contentDescription">@string/app_name</item>
 
+    </style>
 </resources>
