@@ -11,4 +11,5 @@
     <color name="drag_enter">#689F38</color>
     <color name="drag_exit">#C2185B</color>
     <color name="drag_ended">#CDCDCD</color>
+    <color name="name_card">#430E0E0E</color>
 </resources>

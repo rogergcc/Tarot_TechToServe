@@ -1,7 +1,9 @@
 package com.maquipuray.tarot_techtoserve.ui.tarot_diario;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.DragEvent;
 import android.view.Menu;
 import android.view.View;
@@ -31,8 +33,10 @@ public class TarotDiarioActivity extends AppCompatActivity
     TarotAdapter tarotAdapter;
     private int countCardClick = 0;
     private List<DataCards> dataCards;
+    private List<DataCards> dataTarotsResults;
 
     private Context mcontext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +60,21 @@ public class TarotDiarioActivity extends AppCompatActivity
             }
         });
 
+        activityTarotDiarioBinding.btnVerLectura.setOnClickListener(view1 -> {
+            Intent myIntent = new Intent(TarotDiarioActivity.this, ResultActivity.class);
+            myIntent.putParcelableArrayListExtra("data_result", (ArrayList<? extends Parcelable>) dataTarotsResults);
+            startActivity(myIntent);
 
+        });
     }
 
     public void initView() {
         dataCards = new ArrayList<>();
         dataCards.clear();
+        dataTarotsResults = new ArrayList<>();
+        dataTarotsResults.clear();
+
+
 //        RecyclerView rv_ = findViewById(R.id.rv_list);
 
         activityTarotDiarioBinding.rvList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
@@ -92,6 +105,8 @@ public class TarotDiarioActivity extends AppCompatActivity
         initContainer(activityTarotDiarioBinding.imgv3rdCard, activityTarotDiarioBinding.tvImgv3, 3);
         initContainer(activityTarotDiarioBinding.imgv4thCard, activityTarotDiarioBinding.tvImgv4, 4);
         initContainer(activityTarotDiarioBinding.imgv5thCard, activityTarotDiarioBinding.tvImgv5, 5);
+
+
     }
 
     @Override
@@ -127,7 +142,7 @@ public class TarotDiarioActivity extends AppCompatActivity
 
 //                        setImgIntoContainer(state.item);
 
-
+                        dataTarotsResults.add(state.item);
                         if (positionCardCruz == 1) {
                             activityTarotDiarioBinding.imgv2ndCard.setEnabled(true);
                             activityTarotDiarioBinding.tvImgv2.setText(getString(R.string.tv_message_card));
@@ -145,7 +160,7 @@ public class TarotDiarioActivity extends AppCompatActivity
                             activityTarotDiarioBinding.tvImgv5.setText(getString(R.string.tv_message_card));
                         }
 
-
+                        //FINISH SELECTING 5 CARDS
                         if (positionCardCruz == 5) {
                             activityTarotDiarioBinding.rvList.setVisibility(View.GONE);
                             activityTarotDiarioBinding.tvEligaSuCarta.setVisibility(View.GONE);
@@ -206,6 +221,6 @@ public class TarotDiarioActivity extends AppCompatActivity
             activityTarotDiarioBinding.tvImgv5.setVisibility(View.GONE);
         }
 
-        Toast.makeText(this, "Card " + card.getName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Card " + card.getName(), Toast.LENGTH_SHORT).show();
     }
 }

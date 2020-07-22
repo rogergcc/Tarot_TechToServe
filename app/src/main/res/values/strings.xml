@@ -28,7 +28,8 @@
     <string name="msg_ti1">Tirada a un carta</string>
     <string name="msg_ti2">Tirada Clásica</string>
     <string name="msg_ti3">El camino</string>
-    <string name="tv_message_card">Coloque Aqui \nsu \nCarta</string>
+    <string name="tv_message_card">Arrastra \nAqui</string>
     <string name="ver_lectura">Ver Lectura</string>
     <string name="eliga_carta">Eliga su carta</string>
+    <string name="menu_share">Share</string>
 </resources>
