@@ -15,6 +15,7 @@
     <string name="menu_comentarios">Envía Comentarios</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="title_activity_tarot_marsella">Tarot de Marsella</string>
+    <string name="title_activity_tarot_game">Tarot Diario</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -27,4 +28,5 @@
     <string name="msg_ti1">Tirada a un carta</string>
     <string name="msg_ti2">Tirada Clásica</string>
     <string name="msg_ti3">El camino</string>
+    <string name="tv_message_card">Coloque Aqui \nsu \nCarta</string>
 </resources>

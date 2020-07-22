@@ -7,4 +7,8 @@
     <color name="start">#B449CF</color>
     <color name="item">#f2f2f2</color>
     <color name="item_text">#676767</color>
+
+    <color name="drag_enter">#689F38</color>
+    <color name="drag_exit">#C2185B</color>
+    <color name="drag_ended">#CDCDCD</color>
 </resources>

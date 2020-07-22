@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.maquipuray.tarot_techtoserve.R;
 import com.maquipuray.tarot_techtoserve.data.DataCards;
+import com.maquipuray.tarot_techtoserve.data.DragData;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class TarotAdapter extends
         RecyclerView.Adapter<TarotAdapter.ViewHolder> {
 
     private static ClickListener clickListener;
-    private List<DataCards> listOfLocations;
+    private List<DataCards> dataCardsList;
     private Context context;
     private Drawable emojiForCircle = null;
     private Drawable backgroundCircle = null;
@@ -34,7 +37,7 @@ public class TarotAdapter extends
     public TarotAdapter(List<DataCards> cardGameList,
                         Context context, ClickListener cardClickListener) {
         this.context = context;
-        this.listOfLocations = cardGameList;
+        this.dataCardsList = cardGameList;
 
         clickListener = cardClickListener;
     }
@@ -50,10 +53,32 @@ public class TarotAdapter extends
     }
 
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int singleRvCardToUse = R.layout.item_card;
         View itemView = LayoutInflater.from(parent.getContext()).inflate(singleRvCardToUse, parent, false);
+
+
+//        final View v = LayoutInflater.from(parent.getContext())
+//                .inflate(R.layout.item_card, parent, false);
+//        final ViewHolder holder = new ViewHolder(v);
+//        final View shape = holder.imv_card;
+//
+////        View view = LayoutInflater.from(context).inflate(singleRvCardToUse, parent, false);
+//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                final DataCards item = dataCardsList.get(holder.getAdapterPosition());
+//                final DragData state = new DragData(item, shape.getWidth(), shape.getHeight());
+//                final View.DragShadowBuilder shadow = new View.DragShadowBuilder(shape);
+//                ViewCompat.startDragAndDrop(shape, null, shadow, state, 0);
+//                return true;
+//            }
+//        });
+//
+//        return holder;
+
         return new ViewHolder(itemView);
 
 //        View itemView = LayoutInflater.from(parent.getContext()).inflate( R.layout.rv_item_cardgame, parent, false);
@@ -67,7 +92,7 @@ public class TarotAdapter extends
 
     @Override
     public long getItemId(int position) {
-        DataCards cardGame = listOfLocations.get(position);
+        DataCards cardGame = dataCardsList.get(position);
         return cardGame.getId();
     }
 
@@ -79,13 +104,23 @@ public class TarotAdapter extends
 
     @Override
     public int getItemCount() {
-        return listOfLocations.size();
+        return dataCardsList.size();
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder card, int position) {
 
-        final DataCards data = listOfLocations.get(position);
+        final DataCards data = dataCardsList.get(position);
+        final View shape = card.imv_card;
+
+        card.imv_card.setOnLongClickListener(v -> {
+            final DataCards item = dataCardsList.get(card.getAdapterPosition());
+            final DragData state = new DragData(item, shape.getWidth(), shape.getHeight(), position);
+            final View.DragShadowBuilder shadow = new View.DragShadowBuilder(shape);
+            ViewCompat.startDragAndDrop(shape, null, shadow, state, 0);
+
+            return true;
+        });
 
 
         //region REGION WITH IMAGES RESOURCE DRAWABLE
@@ -110,13 +145,14 @@ public class TarotAdapter extends
 //            }
 //        }, ConstantsGame.DIFFICULTY_GAME_TIME_SWIP_SELECTED);
 
-
+//        card.imv_card.setImageResource(data.getImageResource());
         card.imv_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickListener.onItemClick(position, card.imv_card, data);
+                // clickListener.onItemClick(position, card.imv_card, data);
             }
         });
+
 
         //endregion
 

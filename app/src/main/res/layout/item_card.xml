@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    android:layout_margin="5dp"
 
-    style="@style/StyleCardViewStyle">
+
+    app:strokeColor="@color/item"
+    app:strokeWidth="3dp"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    android:foreground="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="@dimen/card_elevation"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+
+    >
 
     <ImageView
         android:id="@+id/imv_card"
@@ -15,4 +26,4 @@
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:contentDescription="@string/app_name" />
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
