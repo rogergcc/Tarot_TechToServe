@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
@@ -35,11 +34,13 @@ public class TarotAdapter extends
 
 
     public TarotAdapter(List<DataCards> cardGameList,
-                        Context context, ClickListener cardClickListener) {
+                        Context context
+//                       ,ClickListener cardClickListener
+    ) {
         this.context = context;
         this.dataCardsList = cardGameList;
 
-        clickListener = cardClickListener;
+//        clickListener = cardClickListener;
     }
 
     public static boolean checkAvailability(List<DataCards> cardGameList, DataCards cardGame) {
@@ -112,7 +113,9 @@ public class TarotAdapter extends
 
         final DataCards data = dataCardsList.get(position);
         final View shape = card.imv_card;
-        card.imv_card.setImageResource(data.getImageResource());
+
+//        card.imv_card.setImageResource(data.getImageResource());
+
         card.imv_card.setOnLongClickListener(v -> {
             final DataCards item = dataCardsList.get(card.getLayoutPosition());
             final DragData state = new DragData(item, shape.getWidth(), shape.getHeight(), position);
@@ -125,35 +128,6 @@ public class TarotAdapter extends
         });
 
 
-        //region REGION WITH IMAGES RESOURCE DRAWABLE
-//        card.imageViewFront.setEnabled(false);
-
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-////                    rotateHorizontalScale(locationCard.getImageResource(), card.imageViewFront, 120);
-//                rotateHorizontalScaleLayout(card.rl_offline_item, locationCard.getImageResource(), card.imageViewFront, 120);
-//            }
-//        }, ConstantsGame.DELAY_TIME_AFTER_FIRST_IMAGES);
-//
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                rotateHorizontalScaleLayout(card.rl_offline_item, R.drawable.ic_question, card.imageViewFront, 120);
-//                card.imageViewFront.setEnabled(true);
-//            }
-//        }, ConstantsGame.DIFFICULTY_GAME_TIME_SWIP_SELECTED);
-
-//        card.imv_card.setImageResource(data.getImageResource());
-        card.imv_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // clickListener.onItemClick(position, card.imv_card, data);
-            }
-        });
 
 
         //endregion
@@ -180,21 +154,15 @@ public class TarotAdapter extends
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-//        ImageView imgv_item;
-
-//        CardView cardView;
-
 
         ImageView imv_card;
         ImageView imageViewBack;
-        RelativeLayout rl_offline_item;
 
         ViewHolder(View itemView) {
             super(itemView);
 
 //            flipView_card = itemView.findViewById(R.id.flipView_card);
             imv_card = itemView.findViewById(R.id.imv_card);
-//            rl_offline_item = itemView.findViewById(R.id.rl_offline_item);
 //            imageViewBack = itemView.findViewById(R.id.imgBackCard);
 
 

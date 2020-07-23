@@ -27,7 +27,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class TarotDiarioActivity extends AppCompatActivity
-        implements TarotAdapter.ClickListener {
+         {
 
     ActivityTarotDiarioBinding activityTarotDiarioBinding;
     TarotAdapter tarotAdapter;
@@ -87,7 +87,7 @@ public class TarotDiarioActivity extends AppCompatActivity
 
         dataCards.addAll(DataUtils.getcardsCompleteList());
 
-        tarotAdapter = new TarotAdapter(dataCards, this, this);
+        tarotAdapter = new TarotAdapter(dataCards, this);
 
         activityTarotDiarioBinding.rvList.setAdapter(tarotAdapter);
 
@@ -142,15 +142,16 @@ public class TarotDiarioActivity extends AppCompatActivity
                         //  final float dropY = dragEvent.getY();
                         final DragData state = (DragData) dragEvent.getLocalState();
 
-
+                        //region REGION SELECT RANDOM AND REMOVE CARD FROM DECK
                         DataCards randomCard = DataUtils.getRandomItemFromList(dataCards);
                         dataTarotsResults.add(randomCard);
+
 
                         dataCards.remove(randomCard);
                         tarotAdapter.notifyItemRemoved(state.position);
                         tarotAdapter.notifyItemRangeRemoved(state.position, dataCards.size());
                         tarotAdapter.notifyDataSetChanged();
-
+                        //endregion
 
                         if (positionCardCruz == 1) {
                             activityTarotDiarioBinding.imgv2ndCard.setEnabled(true);
@@ -198,38 +199,8 @@ public class TarotDiarioActivity extends AppCompatActivity
 
     }
 
-
     private void setImgIntoContainer(ImageView imageView, DataCards data) {
         activityTarotDiarioBinding.imgv1stCard.setImageResource(data.getImageResource());
     }
 
-    @Override
-    public void onItemClick(int position, ImageView view, DataCards card) {
-        countCardClick++;
-
-        if (countCardClick == 1) {
-            activityTarotDiarioBinding.imgv1stCard.setImageResource(card.getImageResource());
-//            activityTarotDiarioBinding.tvImgv1.setVisibility(View.GONE);
-
-
-        }
-        if (countCardClick == 2) {
-            activityTarotDiarioBinding.imgv2ndCard.setImageResource(card.getImageResource());
-            activityTarotDiarioBinding.tvImgv2.setVisibility(View.GONE);
-        }
-        if (countCardClick == 3) {
-            activityTarotDiarioBinding.imgv3rdCard.setImageResource(card.getImageResource());
-            activityTarotDiarioBinding.tvImgv3.setVisibility(View.GONE);
-        }
-        if (countCardClick == 4) {
-            activityTarotDiarioBinding.imgv4thCard.setImageResource(card.getImageResource());
-            activityTarotDiarioBinding.tvImgv4.setVisibility(View.GONE);
-        }
-        if (countCardClick == 5) {
-            activityTarotDiarioBinding.imgv5thCard.setImageResource(card.getImageResource());
-            activityTarotDiarioBinding.tvImgv5.setVisibility(View.GONE);
-        }
-
-//        Toast.makeText(this, "Card " + card.getName(), Toast.LENGTH_SHORT).show();
-    }
 }

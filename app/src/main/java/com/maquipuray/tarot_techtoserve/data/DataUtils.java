@@ -51,22 +51,22 @@ public class DataUtils {
         cardsCompleteList.add(new DataCards(3, "la emperatriz", R.drawable.la_emperatriz_3));
         cardsCompleteList.add(new DataCards(8, "la justicia", R.drawable.la_justicia_8));
         cardsCompleteList.add(new DataCards(5, "el sumo sacerdote", R.drawable.el_sumo_sacerdote_5));
-//        cardsCompleteList.add(new DataCards(18, "la luna", R.drawable.la_luna_18));
-//        cardsCompleteList.add(new DataCards(14, "la templanza", R.drawable.la_templanza_14));
-//        cardsCompleteList.add(new DataCards(1, "el mago", R.drawable.el_mago_1));
-//        cardsCompleteList.add(new DataCards(11, "la fuerza", R.drawable.la_fuerza_11));
-//        cardsCompleteList.add(new DataCards(17, "la estrella", R.drawable.la_estrella_17));
-//        cardsCompleteList.add(new DataCards(2, "la sacerdotisa", R.drawable.la_sacerdotisa_2));
-//        cardsCompleteList.add(new DataCards(15, "el diablo", R.drawable.el_diablo_15));
-//        cardsCompleteList.add(new DataCards(19, "el sol", R.drawable.el_sol_19));
-//        cardsCompleteList.add(new DataCards(21, "el mundo", R.drawable.el_mundo_21));
-//        cardsCompleteList.add(new DataCards(6, "los enamorados", R.drawable.los_enamorados_6));
-//        cardsCompleteList.add(new DataCards(0, "el loco", R.drawable.el_loco_0));
-//        cardsCompleteList.add(new DataCards(12, "el colgado ", R.drawable.el_colgado_12));
-//        cardsCompleteList.add(new DataCards(20, "el juicio ", R.drawable.el_juicio_20));
-//        cardsCompleteList.add(new DataCards(13, "la muerte ", R.drawable.la_muerte_13));
-//        cardsCompleteList.add(new DataCards(7, "el carro", R.drawable.el_carro_7));
-//        cardsCompleteList.add(new DataCards(10, "rueda de la fortuna", R.drawable.rueda_de_la_fortuna_10));
+        cardsCompleteList.add(new DataCards(18, "la luna", R.drawable.la_luna_18));
+        cardsCompleteList.add(new DataCards(14, "la templanza", R.drawable.la_templanza_14));
+        cardsCompleteList.add(new DataCards(1, "el mago", R.drawable.el_mago_1));
+        cardsCompleteList.add(new DataCards(11, "la fuerza", R.drawable.la_fuerza_11));
+        cardsCompleteList.add(new DataCards(17, "la estrella", R.drawable.la_estrella_17));
+        cardsCompleteList.add(new DataCards(2, "la sacerdotisa", R.drawable.la_sacerdotisa_2));
+        cardsCompleteList.add(new DataCards(15, "el diablo", R.drawable.el_diablo_15));
+        cardsCompleteList.add(new DataCards(19, "el sol", R.drawable.el_sol_19));
+        cardsCompleteList.add(new DataCards(21, "el mundo", R.drawable.el_mundo_21));
+        cardsCompleteList.add(new DataCards(6, "los enamorados", R.drawable.los_enamorados_6));
+        cardsCompleteList.add(new DataCards(0, "el loco", R.drawable.el_loco_0));
+        cardsCompleteList.add(new DataCards(12, "el colgado ", R.drawable.el_colgado_12));
+        cardsCompleteList.add(new DataCards(20, "el juicio ", R.drawable.el_juicio_20));
+        cardsCompleteList.add(new DataCards(13, "la muerte ", R.drawable.la_muerte_13));
+        cardsCompleteList.add(new DataCards(7, "el carro", R.drawable.el_carro_7));
+        cardsCompleteList.add(new DataCards(10, "rueda de la fortuna", R.drawable.rueda_de_la_fortuna_10));
     }
 
     public static void rotateHorizontalSBack(final Context context, final int imageGlide, final ImageView img_flip_animator) {
