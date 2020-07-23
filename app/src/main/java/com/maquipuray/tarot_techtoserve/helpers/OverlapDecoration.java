@@ -13,7 +13,7 @@ public class OverlapDecoration extends RecyclerView.ItemDecoration {
 
     //Following code from : http://stackoverflow.com/questions/27633454/how-to-overlap-items-in-linearlayoutmanager-recyclerview-like-stacking-cards
 //    private final static int overlap = -100;
-    private final static int overlap = -70;
+    private final static int overlap = -100;
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

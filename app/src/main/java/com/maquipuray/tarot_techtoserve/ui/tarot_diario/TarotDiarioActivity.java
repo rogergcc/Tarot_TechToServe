@@ -84,9 +84,12 @@ public class TarotDiarioActivity extends AppCompatActivity
         RecyclerView.ItemDecoration decoration = new OverlapDecoration();
         activityTarotDiarioBinding.rvList.addItemDecoration(decoration);
         Collections.shuffle(DataUtils.getcardsCompleteList());
+
         dataCards.addAll(DataUtils.getcardsCompleteList());
-        tarotAdapter = new TarotAdapter(DataUtils.getcardsCompleteList(), this, this);
-        activityTarotDiarioBinding.rvList.setAdapter(new TarotAdapter(DataUtils.getcardsCompleteList(), this, this));
+
+        tarotAdapter = new TarotAdapter(dataCards, this, this);
+
+        activityTarotDiarioBinding.rvList.setAdapter(tarotAdapter);
 
 
         activityTarotDiarioBinding.imgv1stCard.setEnabled(true);
@@ -132,7 +135,6 @@ public class TarotDiarioActivity extends AppCompatActivity
                         imageView.setBackgroundColor(getResources().getColor(R.color.drag_exit));
                         break;
                     case DragEvent.ACTION_DRAG_ENDED:
-//                        imageView.setBackgroundColor(Color.WHITE);
                         imageView.setBackgroundColor(getResources().getColor(R.color.drag_ended));
                         break;
                     case DragEvent.ACTION_DROP:
@@ -140,9 +142,16 @@ public class TarotDiarioActivity extends AppCompatActivity
                         //  final float dropY = dragEvent.getY();
                         final DragData state = (DragData) dragEvent.getLocalState();
 
-//                        setImgIntoContainer(state.item);
 
-                        dataTarotsResults.add(state.item);
+                        DataCards randomCard = DataUtils.getRandomItemFromList(dataCards);
+                        dataTarotsResults.add(randomCard);
+
+                        dataCards.remove(randomCard);
+                        tarotAdapter.notifyItemRemoved(state.position);
+                        tarotAdapter.notifyItemRangeRemoved(state.position, dataCards.size());
+                        tarotAdapter.notifyDataSetChanged();
+
+
                         if (positionCardCruz == 1) {
                             activityTarotDiarioBinding.imgv2ndCard.setEnabled(true);
                             activityTarotDiarioBinding.tvImgv2.setText(getString(R.string.tv_message_card));
@@ -167,15 +176,15 @@ public class TarotDiarioActivity extends AppCompatActivity
                             activityTarotDiarioBinding.btnVerLectura.setVisibility(View.VISIBLE);
 
                         }
+
 //                        imageView.setImageResource(state.item.getImageResource()); //always random card from deck
-
 //                        imageView.setImageResource(dataCards.get(state.position).getImageResource());
-                        imageView.setImageResource(state.item.getImageResource());
 
-                        imageView.setImageResource(R.drawable.carta);
-                        Toast.makeText(TarotDiarioActivity.this, "Carta: " + state.item.getName(), Toast.LENGTH_SHORT).show();
+//                        imageView.setImageResource(R.drawable.carta);
 
-                        DataUtils.rotateHorizontalSBack(mcontext, state.item.getImageResource(), imageView);
+                        Toast.makeText(TarotDiarioActivity.this, "Carta: " + randomCard.getName(), Toast.LENGTH_SHORT).show();
+
+                        DataUtils.rotateHorizontalSBack(mcontext, randomCard.getImageResource(), imageView);
                         textView.setVisibility(View.GONE);
                         imageView.setEnabled(false);
 

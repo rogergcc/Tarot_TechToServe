@@ -112,13 +112,14 @@ public class TarotAdapter extends
 
         final DataCards data = dataCardsList.get(position);
         final View shape = card.imv_card;
-
+        card.imv_card.setImageResource(data.getImageResource());
         card.imv_card.setOnLongClickListener(v -> {
-            final DataCards item = dataCardsList.get(card.getAdapterPosition());
+            final DataCards item = dataCardsList.get(card.getLayoutPosition());
             final DragData state = new DragData(item, shape.getWidth(), shape.getHeight(), position);
             final View.DragShadowBuilder shadow = new View.DragShadowBuilder(shape);
 
             ViewCompat.startDragAndDrop(shape, null, shadow, state, 0);
+
 
             return true;
         });
